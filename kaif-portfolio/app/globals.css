@@ -1,0 +1,39 @@
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource-variable/inter-tight';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; background: #151413; }
+  html, body { overflow-x: clip; max-width: 100%; overscroll-behavior-x: none; }
+  body { @apply bg-ink font-sans text-ink; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: hidden; }
+  @media (pointer: fine) { body, a, button { cursor: none; } }
+}
+
+@layer components {
+  .link-underline { position: relative; }
+  .link-underline::after {
+    content: ''; position: absolute; left: 0; bottom: -3px; height: 1px; width: 100%;
+    background: currentColor; transform: scaleX(0); transform-origin: right;
+    transition: transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Film grain, so the flat paper colour doesn't look like a template. */
+  .grain::before {
+    content: ''; position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: .07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain 1s steps(6) infinite;
+  }
+  @keyframes grain {
+    0%,100% { background-position: 0 0; } 20% { background-position: -18px 12px; } 40% { background-position: 14px -20px; }
+    60% { background-position: -10px -6px; } 80% { background-position: 20px 16px; }
+  }
+}
