@@ -52,7 +52,7 @@ export default function Work() {
                 </span>
                 <span className="col-span-10 overflow-hidden md:col-span-6">
                   <span
-                    className={`w-in block font-serif text-5xl leading-[0.95] tracking-[-0.02em] transition-colors duration-300 md:text-7xl ${
+                    className={`w-in block pb-[0.06em] pr-[0.1em] font-serif text-[2.6rem] leading-[0.95] sm:text-5xl tracking-[-0.02em] transition-colors duration-300 md:text-7xl ${
                       isOpen ? 'italic text-accent' : ''
                     }`}
                   >

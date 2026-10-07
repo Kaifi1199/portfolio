@@ -24,12 +24,27 @@ export default function Portfolio() {
   useEffect(() => {
     if (!ready) return;
     const mm = gsap.matchMedia();
+    // Progress bar everywhere.
     mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.to('.scroll-progress', {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: { start: 0, end: 'max', scrub: 0.3 },
+      });
+    });
+    // Stacked cards on larger screens only: on phones, pinning fights the browser's own
+    // toolbar resizing and costs frames, so phones get the plain scroll with reveals.
+    mm.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
       const panels = gsap.utils.toArray<HTMLElement>('.stack-panel');
+      const shades: HTMLElement[] = [];
       panels.forEach((p, i) => {
         gsap.set(p, { position: 'relative', zIndex: i + 1, transformOrigin: '50% 100%' });
         const next = panels[i + 1];
         if (!next) return;
+        const shade = document.createElement('div');
+        shade.className = 'stack-shade';
+        p.appendChild(shade);
+        shades.push(shade);
         ScrollTrigger.create({
           trigger: p,
           start: () => (p.offsetHeight <= window.innerHeight ? 'top top' : 'bottom bottom'),
@@ -39,25 +54,13 @@ export default function Portfolio() {
           pinSpacing: false,
           invalidateOnRefresh: true,
         });
-        gsap.fromTo(
-          p,
-          { scale: 1, opacity: 1, borderRadius: 0 },
-          {
-            scale: 0.9,
-            opacity: 0.35,
-            borderRadius: 28,
-            ease: 'none',
-            scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true, invalidateOnRefresh: true },
-          },
-        );
+        const st = { trigger: next, start: 'top bottom', end: 'top top', scrub: true, invalidateOnRefresh: true };
+        gsap.fromTo(p, { scale: 1 }, { scale: 0.92, ease: 'none', force3D: true, scrollTrigger: st });
+        gsap.fromTo(shade, { opacity: 0 }, { opacity: 0.6, ease: 'none', scrollTrigger: { ...st } });
         gsap.set(next, { boxShadow: '0 -30px 60px -30px rgba(0,0,0,0.45)' });
       });
-      gsap.to('.scroll-progress', {
-        scaleY: 1,
-        ease: 'none',
-        scrollTrigger: { start: 0, end: 'max', scrub: 0.3 },
-      });
       ScrollTrigger.refresh();
+      return () => shades.forEach((s) => s.remove());
     });
     return () => mm.revert();
   }, [ready]);

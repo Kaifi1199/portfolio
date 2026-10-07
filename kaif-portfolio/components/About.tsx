@@ -43,7 +43,7 @@ export default function About() {
     <section id="about" ref={root} className="stack-panel relative bg-ink px-5 py-28 text-paper md:px-10 md:py-40">
       <SectionHead index="02" title="About me" aside="The short version" dark />
 
-      <p className="ab-text mt-16 max-w-[26ch] font-serif text-[8.5vw] leading-[1.05] tracking-[-0.015em] md:ml-[8.33%] md:text-[4.2vw]">
+      <p className="ab-text mt-16 max-w-[26ch] font-serif text-[7.6vw] leading-[1.08] tracking-[-0.015em] md:ml-[8.33%] md:text-[4.2vw]">
         {STATEMENT.split(' ').map((w, i) => (
           <span key={i} className={`ab-w ${w.startsWith('AasaanLearn') ? 'italic text-accent' : ''}`}>
             {w}{' '}

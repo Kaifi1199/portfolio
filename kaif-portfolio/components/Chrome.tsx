@@ -88,7 +88,7 @@ export function Nav({ ready }: { ready: boolean }) {
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 flex flex-col justify-end bg-ink px-5 pb-10 text-paper md:hidden"
+            className="fixed inset-0 z-40 flex flex-col justify-start overflow-y-auto bg-ink px-5 pb-10 pt-24 text-paper md:hidden"
           >
             {LINKS.map(([id, label], i) => (
               <motion.button
@@ -97,7 +97,7 @@ export function Nav({ ready }: { ready: boolean }) {
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 + i * 0.06 }}
-                className="border-b border-paper/15 py-3 text-left font-serif text-6xl"
+                className="border-b border-paper/15 py-3 text-left font-serif text-5xl"
               >
                 {label}
               </motion.button>

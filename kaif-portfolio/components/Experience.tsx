@@ -39,7 +39,7 @@ export function Experience() {
                 {e.when}
               </p>
               <div className="col-span-12 md:col-span-3">
-                <h3 className="ex-in font-serif text-5xl leading-none tracking-[-0.02em]">{e.company}</h3>
+                <h3 className="ex-in pr-[0.06em] font-serif text-[2.6rem] leading-none sm:text-5xl tracking-[-0.02em]">{e.company}</h3>
                 <p className="ex-in mt-3 text-[15px] italic text-muted">{e.role}</p>
               </div>
               <ul className="col-span-12 space-y-4 md:col-span-5">
@@ -102,7 +102,7 @@ export function Skills() {
   return (
     <section ref={ref} className="stack-panel bg-paper-dark px-5 py-28 md:px-10 md:py-36">
       <SectionHead index="04" title="Tools I reach for" aside="From the resume, not a wishlist" />
-      <div className="mt-16 grid grid-cols-2 gap-x-4 gap-y-12 md:grid-cols-6">
+      <div className="mt-16 grid grid-cols-2 gap-x-5 gap-y-12 md:grid-cols-6">
         {SKILLS.map((g) => (
           <div key={g.group} className="relative pt-5">
             <span className="sk-rule absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-ink" />
@@ -110,10 +110,15 @@ export function Skills() {
             <ul className="mt-5 space-y-2">
               {g.items.map((s) => (
                 <li key={s} className="sk-item opacity-0">
-                  <span onMouseEnter={hop} data-cursor="hover" className="inline-block cursor-default font-serif text-2xl leading-tight">
-                    {s.split('').map((c, i) => (
-                      <span key={i} className="sk-ch inline-block whitespace-pre">
-                        {c}
+                  <span onMouseEnter={hop} data-cursor="hover" className="inline cursor-default break-words font-serif text-xl leading-tight md:text-2xl">
+                    {s.split(' ').map((word, wi) => (
+                      <span key={wi} className="inline-block whitespace-nowrap">
+                        {word.split('').map((c, i) => (
+                          <span key={i} className="sk-ch inline-block">
+                            {c}
+                          </span>
+                        ))}
+                        {wi < s.split(' ').length - 1 && <span className="inline-block w-[0.28em]" />}
                       </span>
                     ))}
                   </span>

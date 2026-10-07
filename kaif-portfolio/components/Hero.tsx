@@ -45,9 +45,9 @@ export default function Hero({ ready }: { ready: boolean }) {
   }, [ready]);
 
   return (
-    <section id="top" ref={root} className="stack-panel relative flex min-h-[100svh] bg-paper flex-col justify-end overflow-hidden pt-28">
+    <section id="top" ref={root} className="stack-panel relative flex flex-col overflow-hidden bg-paper pt-24 md:min-h-[100svh] md:justify-end md:pt-28">
       <div className="px-5 md:px-10">
-        <div className="mb-8 grid grid-cols-12 gap-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+        <div className="mb-6 grid grid-cols-12 gap-4 font-mono md:mb-8 text-[11px] uppercase tracking-[0.18em] text-muted">
           <p className="h-meta col-span-6 md:col-span-3">(Portfolio — 2026)</p>
           <p className="h-meta col-span-6 text-right md:col-span-3 md:col-start-10">
             <span className="mr-2 inline-block h-[7px] w-[7px] translate-y-[-1px] rounded-full bg-accent" />
@@ -57,11 +57,11 @@ export default function Hero({ ready }: { ready: boolean }) {
 
         <h1 className="h-name font-serif leading-[0.86] tracking-[-0.035em] text-ink">
           <span className="h-line block overflow-hidden pb-[0.06em]">
-            <span className="block text-[19vw] md:text-[15.5vw]">Muhammad</span>
+            <span className="block pr-[0.06em] text-[16.5vw] md:text-[15.5vw]">Muhammad</span>
           </span>
           <span className="h-line block overflow-hidden pb-[0.06em]">
-            <span className="flex items-end gap-[3vw] text-[19vw] md:text-[15.5vw]">
-              <span className="italic">Kaif</span>
+            <span className="flex items-end gap-[3vw] text-[16.5vw] md:text-[15.5vw]">
+              <span className="pr-[0.08em] italic">Kaif</span>
               <svg
                 className="h-star mb-[2.2vw] h-[9vw] w-[9vw] shrink-0 text-accent md:h-[7vw] md:w-[7vw]"
                 viewBox="0 0 100 100"
@@ -109,8 +109,10 @@ export default function Hero({ ready }: { ready: boolean }) {
             <div key={k} className="flex shrink-0 items-center" aria-hidden={k === 1}>
               {MARQUEE.map((w) => (
                 <span key={w + k} className="flex items-center font-serif text-2xl italic md:text-3xl">
-                  <span className="px-6">{w}</span>
-                  <span className="text-base not-italic text-accent">✳</span>
+                  <span className="px-5 md:px-6">{w}</span>
+                  <svg viewBox="0 0 100 100" className="h-3.5 w-3.5 shrink-0 text-accent md:h-4 md:w-4" aria-hidden>
+                    <path fill="currentColor" d="M50 0c3 30 20 47 50 50-30 3-47 20-50 50-3-30-20-47-50-50C30 47 47 30 50 0Z" />
+                  </svg>
                 </span>
               ))}
             </div>

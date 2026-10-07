@@ -10,7 +10,9 @@ let lenis: Lenis | null = null;
 export function startSmoothScroll() {
   if (typeof window === 'undefined' || lenis) return lenis;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
-  lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.9 });
+  lenis = new Lenis({ lerp: 0.13, wheelMultiplier: 1 });
+  gsap.ticker.lagSmoothing(0);
+  ScrollTrigger.config({ ignoreMobileResize: true });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis?.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);

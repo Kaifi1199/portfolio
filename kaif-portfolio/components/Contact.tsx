@@ -124,9 +124,9 @@ export default function Contact() {
     <section id="contact" ref={root} className="stack-panel relative overflow-hidden bg-accent px-5 pb-8 pt-28 text-ink md:px-10 md:pt-40">
       <p className="ct-fade font-mono text-[11px] uppercase tracking-[0.18em]">(06) Contact</p>
 
-      <h2 onMouseOver={ripple} className="mt-8 font-serif text-[17vw] leading-[0.86] tracking-[-0.035em] md:text-[12.5vw]" aria-label="Let's build something.">
+      <h2 onMouseOver={ripple} className="mt-8 font-serif text-[15vw] leading-[0.86] tracking-[-0.035em] md:text-[12.5vw]" aria-label="Let's build something.">
         {words.map((w, wi) => (
-          <span key={wi} aria-hidden className="ct-line block overflow-hidden pb-[0.05em]">
+          <span key={wi} aria-hidden className="ct-line block overflow-hidden pb-[0.05em] pr-[0.08em]">
             <span className={`block ${wi === 2 ? 'italic' : ''}`}>
               {w.split('').map((c, i) => (
                 <span key={i} className="ct-ch inline-block">
@@ -204,9 +204,9 @@ export default function Contact() {
         </ul>
       </div>
 
-      <footer className="mt-28 flex flex-col gap-4 border-t border-ink/40 pt-6 font-mono text-[11px] uppercase tracking-[0.18em] md:flex-row md:items-center md:justify-between">
+      <footer className="mt-28 flex flex-col items-center gap-4 border-t border-ink/40 pt-6 text-center font-mono text-[11px] uppercase tracking-[0.18em] md:flex-row md:justify-between md:text-left">
         <span>© 2026 Muhammad Kaif</span>
-        <button onClick={() => scrollToId('top')} data-cursor="hover" className="link-underline self-start md:self-auto">
+        <button onClick={() => scrollToId('top')} data-cursor="hover" className="link-underline">
           Back to top ↑
         </button>
       </footer>

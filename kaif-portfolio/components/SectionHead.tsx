@@ -43,9 +43,9 @@ export default function SectionHead({
       <p className={`col-span-12 mb-3 font-mono text-[11px] uppercase tracking-[0.18em] md:col-span-1 md:mb-2 ${dark ? 'text-paper/50' : 'text-muted'}`}>
         ({index})
       </p>
-      <h2 className="col-span-12 font-serif text-[13vw] leading-[0.9] tracking-[-0.03em] md:col-span-8 md:text-[7.5vw]" aria-label={title}>
+      <h2 className="col-span-12 font-serif text-[12vw] leading-[0.9] tracking-[-0.03em] md:col-span-8 md:text-[7.5vw]" aria-label={title}>
         {title.split(' ').map((w, wi) => (
-          <span key={wi} aria-hidden className="mr-[0.22em] inline-block overflow-hidden pb-[0.08em] align-bottom">
+          <span key={wi} aria-hidden className="mr-[0.22em] inline-block overflow-hidden pb-[0.08em] pr-[0.06em] align-bottom">
             {w.split('').map((c, ci) => (
               <span key={ci} className={`sh-l inline-block translate-y-[105%] ${wi % 2 === 1 ? 'italic' : ''}`}>
                 {c}
