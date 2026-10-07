@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger, scrollToId } from './motion';
+import { PROFILE } from '@/data';
 
 const MARQUEE = ['Next.js', 'FastAPI', 'LLM pipelines', 'n8n automation', 'Firebase', 'MongoDB', 'NLP', 'Flutter', 'TypeScript', 'Python'];
 
@@ -88,15 +89,28 @@ export default function Hero({ ready }: { ready: boolean }) {
             I build web products with a model somewhere inside them, and I care just as much about the
             front end people actually touch.
           </p>
-          <div className="h-meta col-span-12 flex items-end md:col-span-3 md:col-start-10 md:justify-end">
+          <div className="h-meta col-span-12 flex flex-wrap items-center gap-x-6 gap-y-4 md:col-span-4 md:col-start-9 md:justify-end md:self-end">
+            <a
+              href={PROFILE.resume}
+              download="Muhammad-Kaif-Resume.pdf"
+              data-cursor="hover"
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-ink py-2 pl-5 pr-2 font-mono text-[11px] uppercase tracking-[0.18em] text-paper"
+            >
+              <span className="absolute inset-0 translate-y-full rounded-full bg-accent transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0" />
+              <span className="relative transition-colors duration-500 group-hover:text-ink">Download Resume</span>
+              <span className="relative grid h-8 w-8 place-items-center overflow-hidden rounded-full bg-paper text-ink">
+                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-[160%]">↓</span>
+                <span className="absolute -translate-y-[160%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0">↓</span>
+              </span>
+            </a>
             <button
               onClick={() => scrollToId('work')}
               data-cursor="hover"
               className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em]"
             >
-              See selected work
+              See work
               <span className="grid h-9 w-9 place-items-center rounded-full border border-ink transition-colors duration-300 group-hover:bg-ink group-hover:text-paper">
-                ↓
+                ↘
               </span>
             </button>
           </div>
