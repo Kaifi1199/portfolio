@@ -62,6 +62,26 @@ export default function Portfolio() {
       ScrollTrigger.refresh();
       return () => shades.forEach((s) => s.remove());
     });
+    // Phones: no pinning or sticky. Each section rises in as a rounded card, growing from
+    // 90% to full width as it comes up the screen. Transform-only (GPU composited), and the
+    // text is never faded, so it stays crisp and readable the whole way.
+    mm.add('(max-width: 767px) and (prefers-reduced-motion: no-preference)', () => {
+      const panels = gsap.utils.toArray<HTMLElement>('.stack-panel').slice(1);
+      panels.forEach((p, i) => {
+        gsap.set(p, { position: 'relative', zIndex: i + 2, borderRadius: '26px 26px 0 0', transformOrigin: '50% 0%' });
+        gsap.fromTo(
+          p,
+          { scale: 0.9, yPercent: 0 },
+          {
+            scale: 1,
+            ease: 'none',
+            force3D: true,
+            scrollTrigger: { trigger: p, start: 'top bottom', end: 'top 30%', scrub: 0.5 },
+          },
+        );
+      });
+      ScrollTrigger.refresh();
+    });
     return () => mm.revert();
   }, [ready]);
 
