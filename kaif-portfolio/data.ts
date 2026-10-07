@@ -7,6 +7,8 @@ export const PROFILE = {
   phoneHref: 'tel:+923346510599',
   github: 'https://github.com/Kaifi1199',
   linkedin: 'https://www.linkedin.com/in/muhammad-kaif-7a8a18286/',
+  // Lives in /public, so it's served from the site root.
+  resume: '/Muhammad-Kaif-Resume.pdf',
 };
 
 export type Project = {
